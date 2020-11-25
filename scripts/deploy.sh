@@ -50,8 +50,10 @@ cp -a "../${siteSource}/." .
 
 # 把所有的文件添加到 git
 git add -A
+echo "222"
 # 添加一条提交内容
 git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
+echo "111"
 # 推送文件
 git push --force --quiet origin gh-pages >/dev/null 2>&1
 
