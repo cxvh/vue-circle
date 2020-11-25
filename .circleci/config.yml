@@ -13,6 +13,7 @@ jobs:
       - checkout
       - run: echo "first hello world"
       - run: npm -v
+      - run:
           name: Install
           command: yarn install
       - run:
