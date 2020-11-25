@@ -11,8 +11,6 @@ jobs:
           fingerprints:
           - "ea:ae:c9:c9:59:2f:e0:98:01:45:f9:e1:df:8f:a2:b4"
       - checkout
-      - run: echo "first hello world"
-      - run: npm -v
       - run:
           name: Install
           command: yarn install
