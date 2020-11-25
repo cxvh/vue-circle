@@ -1,0 +1,15 @@
+version: 2 
+jobs:
+  build:
+    docker:
+      - image: circleci/node:1
+    branches:
+      only:
+        - main
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+          - ""
+      - checkout
+      - run: echo "first hello world"
+      - run: npm -v
