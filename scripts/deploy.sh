@@ -50,7 +50,8 @@ echo "123"
 git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
 echo "112"
 # 推送文件
-git push --force --quiet origin gh-pages
+# git push --force --quiet origin gh-pages
+git push origin main -f
 # 资源回收，删除临时分支与目录
 echo "113"
 cd ..
