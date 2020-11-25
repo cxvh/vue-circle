@@ -18,10 +18,10 @@ echo 'remote is：'$remote
 
 # siteSource="$1"
 
-# if [ ! -d "$siteSource" ]; then
-#    echo "Usage: $0 <site source dir>"
-#    exit 1
-# fi
+if [ ! -d "$siteSource" ]; then
+    echo "Usage: $0 <site source dir>"
+    exit 1
+fi
 
 # 新建一个发布的目录
 mkdir gh-pages-branch
@@ -43,6 +43,8 @@ if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
 else
     git checkout --orphan gh-pages
 fi
+
+ls -a
 
 # 把构建好的文件目录给拷贝进来
 cp -a "../${siteSource}/." .
