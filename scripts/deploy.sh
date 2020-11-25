@@ -1,28 +1,23 @@
-# 告诉 linux 系统这是一个 shell 脚本
 #!/bin/sh
+# 告诉 linux 系统这是一个 shell 脚本
 # 构想 https://gist.github.com/motemen/8595451
 # 基于 https://github.com/eldarlabs/ghpages-deploy-script/blob/master/scripts/deploy-ghpages.sh
 # usage: push-gh-pages DIRECTORY # DIRECTORY is where GitHub pages contents are in (eg. build)
 # LICENSE: Public Domain
-
 # abort the script if there is a non-zero error
 # 没有收到一个非零的数值就退出 shell 脚本执行
 set -e
-
 # 打印当前的工作路径
 pwd
 # 设置远程仓库地址
 remote=$(git config remote.origin.url)
 # 打印仓库地址
 echo 'remote is：'$remote
-
 # siteSource="$1"
-
 if [ ! -d "$siteSource" ]; then
     echo "Usage: $0 <site source dir>"
     exit 1
 fi
-
 # 新建一个发布的目录
 mkdir gh-pages-branch
 cd gh-pages-branch
@@ -47,20 +42,14 @@ fi
 ls -a
 # 把构建好的文件目录给拷贝进来
 cp -a "../${siteSource}/." .
-
 # 把所有的文件添加到 git
 git add -A
-echo "222"
 # 添加一条提交内容
 git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
-echo "111"
 # 推送文件
-git push --force --quiet origin gh-pages >/dev/null 2>&1
-
+git push --force --quiet origin gh-pages
 # 资源回收，删除临时分支与目录
 cd ..
-echo "321"
 rm -rf gh-pages-branch
-echo "123"
 # 完成发布
 echo "Finished Deployment!"
