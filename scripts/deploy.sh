@@ -45,9 +45,10 @@ else
 fi
 
 ls -a
-
+echo "123"
 # 把构建好的文件目录给拷贝进来
 cp -a "../${siteSource}/." .
+echo "321"
 
 # 把所有的文件添加到 git
 git add -A
