@@ -43,13 +43,20 @@ ls -a
 # 把构建好的文件目录给拷贝进来
 cp -a "../${siteSource}/." .
 # 把所有的文件添加到 git
-git add -A
+# git add -A
+git add .
+echo "123"
 # 添加一条提交内容
 git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
+echo "112"
 # 推送文件
 git push --force --quiet origin gh-pages
 # 资源回收，删除临时分支与目录
+echo "113"
 cd ..
+echo "114"
 rm -rf gh-pages-branch
+echo "115"
 # 完成发布
 echo "Finished Deployment!"
+echo "116"
