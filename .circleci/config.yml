@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10
+      - image: circleci/node:14.15.1
     branches:
       only:
         - main
@@ -11,9 +11,27 @@ jobs:
           fingerprints:
           - "ea:ae:c9:c9:59:2f:e0:98:01:45:f9:e1:df:8f:a2:b4"
       - checkout
+      # 复用下面保存的缓存
+      - restore_cache:
+          keys:
+            - dependencies_cxvh
       - run:
           name: Install
           command: yarn install
+      # 保存缓存
+      - save_cache:
+          paths:
+            - node_modules
+          # 起个名字，restore_cache 会用到
+          key: dependencies_cxvh
       - run:
           name: Build
           command: yarn build
+      - run:
+          name: Prepare shell commands
+          # shell chmod +x 赋予执行权限
+          # 执行 shell 脚本
+          command: chmod +x scripts/deploy.sh
+      - run:
+          name: Run Deploy to Github pages
+          command: ./scripts/deploy.sh
