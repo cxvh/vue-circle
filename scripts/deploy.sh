@@ -45,10 +45,8 @@ else
 fi
 
 ls -a
-echo "123"
 # 把构建好的文件目录给拷贝进来
 cp -a "../${siteSource}/." .
-echo "321"
 
 # 把所有的文件添加到 git
 git add -A
@@ -59,7 +57,8 @@ git push --force --quiet origin gh-pages >/dev/null 2>&1
 
 # 资源回收，删除临时分支与目录
 cd ..
+echo "321"
 rm -rf gh-pages-branch
-
+echo "123"
 # 完成发布
 echo "Finished Deployment!"
